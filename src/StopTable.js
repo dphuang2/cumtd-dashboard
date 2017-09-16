@@ -14,6 +14,7 @@ class StopTable extends Component {
       data: {}
     };
     this.getDepartureByStop = this.getDepartureByStop.bind(this);
+    this.refreshData = this.refreshData.bind(this);
   }
 
   getDepartureByStop(searchText){
@@ -31,12 +32,23 @@ class StopTable extends Component {
     })
   }
 
+  refreshData(){
+    console.log(this.state);
+    // If there is currently no data, return
+    if(Object.keys(this.state.data).length === 0)
+      return;
+    this.getDepartureByStop(this.state.data.rqst.params.stop_id);
+  }
+
   render() {
     return (
       <div className="StopTable">
-        <SearchBar 
-          onSearchTextInput={this.getDepartureByStop}
-        />
+        <div>
+          <SearchBar onSearchTextInput={this.getDepartureByStop}/>
+          <div className="reload" onClick={this.refreshData}>
+            reload
+          </div>
+        </div>
         <BusTable data={this.state.data}/>
       </div>
     );

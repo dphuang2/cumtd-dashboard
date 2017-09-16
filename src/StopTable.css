@@ -1,7 +1,7 @@
 .StopTable{
-  display: block;
-  width: auto;
-  background-color: lightblue;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  margin: auto;
+  width: 80%;
+  /*border: 3px solid green;*/
+  background: lightblue;
+  padding: 10px;
 }
